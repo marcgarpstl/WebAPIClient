@@ -1,10 +1,25 @@
 ﻿@page
+@using Microsoft.IdentityModel.Tokens;
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "If you need a service, we got it";
 }
+
+
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <a href="/Create">Add service</a>
+    @if (Model.services.IsNullOrEmpty())
+    {
+        <p>List is empty</p>
+    }
+    else{
+    @foreach(Models.Service service in Model.services)
+    {
+        <p>Service: @service.Name</p>
+        <p>Price: @service.Price</p>
+        <p>Avalible: @service.IsAvalible</p>
+    }
+    }
 </div>

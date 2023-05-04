@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using WebAppAPI.DatabaseContext;
+
 namespace WebAppAPI
 {
     public class Program
@@ -8,6 +11,12 @@ namespace WebAppAPI
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddControllers();
+
+            builder.Services.AddDbContext<DataBaseContext>(options =>
+                options.UseSqlServer(
+                    builder.Configuration.GetConnectionString("myConnectionString")
+                    ));
 
             var app = builder.Build();
 
@@ -27,6 +36,7 @@ namespace WebAppAPI
             app.UseAuthorization();
 
             app.MapRazorPages();
+            app.MapControllers();
 
             app.Run();
         }
