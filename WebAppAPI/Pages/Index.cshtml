@@ -10,16 +10,10 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <a href="/Create">Add service</a>
-    @if (Model.services.IsNullOrEmpty())
-    {
-        <p>List is empty</p>
-    }
-    else{
     @foreach(Models.Service service in Model.services)
     {
         <p>Service: @service.Name</p>
-        <p>Price: @service.Price</p>
+        <p>Price: @service.Price / h</p>
         <p>Avalible: @service.IsAvalible</p>
-    }
     }
 </div>
