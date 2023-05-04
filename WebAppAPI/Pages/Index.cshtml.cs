@@ -1,20 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WebAppAPI.DatabaseContext;
+using WebAppAPI.Models;
 
 namespace WebAppAPI.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        DataBaseContext dbc { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(DataBaseContext dbc)
         {
-            _logger = logger;
+            this.dbc = dbc;
         }
+
+        public List<Service> services { get; set; }
 
         public void OnGet()
         {
-
+            services = dbc.Services.ToList();
         }
     }
 }
