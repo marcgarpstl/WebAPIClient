@@ -1,15 +1,18 @@
 ﻿@page
 @model WebAppAPI.Pages.CreateModel
 @{
+
+
 }
 
 <form method="post">
-    <input asp-for="@Model.service.Name" />
+    <p>Service</p><input asp-for="@Model.service.Name" />
     <p><span asp-validation-for="@Model.service.Name"></span></p>
-    <input asp-for="@Model.service.Price" />
+    <p>Price / h</p><input asp-for="@Model.service.Price" />
     <p><span asp-validation-for="@Model.service.Price"></span></p>
-    <input asp-for="@Model.service.Description" />
+    <p>Desciption</p><input class="desciption" asp-for="@Model.service.Description" />
     <p><span asp-validation-for="@Model.service.Description"></span></p>
-    <input asp-for="@Model.service.IsAvalible" />
+    <p>Avalible</p><input asp-for="@Model.service.IsAvalible" />
     <p><span asp-validation-for="@Model.service.IsAvalible"></span></p>
+    <button type="submit">Add service</button>
 </form>

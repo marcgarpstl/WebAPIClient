@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebAppAPI.DatabaseContext;
 using WebAppAPI.Models;
 
@@ -19,11 +17,6 @@ namespace WebAppAPI.Pages
 
         public void OnGet()
         {
-            if (services.IsNullOrEmpty())
-            {
-                Console.WriteLine("Empty list");
-                return;
-            }
             services = dbc.Services.ToList();
         }
     }
