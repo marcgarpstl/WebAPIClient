@@ -18,6 +18,6 @@ public class ClassController : ControllerBase
     [HttpGet]
     public List<Service> GetObjects()
     {
-        return dbc.Objects.ToList();
+        return dbc.Services.ToList();
     }
 }
