@@ -7,10 +7,10 @@ namespace WebAppAPI.Controller;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ClassController : ControllerBase
+public class ServicesController : ControllerBase
 {
     DataBaseContext dbc;
-    public ClassController(DataBaseContext dbc)
+    public ServicesController(DataBaseContext dbc)
     {
         this.dbc = dbc;
     }
