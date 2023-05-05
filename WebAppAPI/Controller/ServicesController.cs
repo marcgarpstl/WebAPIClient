@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebAppAPI.DatabaseContext;
 using WebAppAPI.Models;
 
@@ -7,10 +6,10 @@ namespace WebAppAPI.Controller;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ClassController : ControllerBase
+public class ServicesController : ControllerBase
 {
     DataBaseContext dbc;
-    public ClassController(DataBaseContext dbc)
+    public ServicesController(DataBaseContext dbc)
     {
         this.dbc = dbc;
     }
@@ -20,4 +19,10 @@ public class ClassController : ControllerBase
     {
         return dbc.Services.ToList();
     }
+    //[HttpGet]
+    //public Service GetObject(int id)
+    //{
+    //    Service service = dbc.Services.Find(id);
+    //    return service;
+    //}
 }
