@@ -14,28 +14,23 @@
     {
         <p>Service: @service.Name</p>
         <p>Price: @service.Price / h</p>
-
+        <p>Service: @service.Description</p>
         @if (service.IsAvalible == true)
         {
-            <p>Avalible: Yes</p>
+            <p>Available: Yes</p>
+            <a asp-page="Hire" asp-route-id="@service.Id">Hire</a>
         }
         else
         {
-            <p>Avalible: No</p>
+            <p>Available: No</p>
         }
         <form method="post" asp-page-handler="Delete" asp-route-id="@service.Id">
 
-            <button type="submit" onclick="return confirm('Are you sure you want to delete service : @service.Name')">
+            <button type="submit" class="delButton" onclick="return confirm('Are you sure you want to delete service : @service.Name')">
                 Delete service
             </button>
+            <button class="updateButton" asp-page-handler="Update" asp-route-id="@service.Id"><a class="linkedText" asp-page="Update" asp-route-id="@service.Id">Update</a></button>
         </form>
-
-        <a asp-page="Update" asp-route-id="@service.Id">Update</a>
-
-
-        <a asp-page="Hire" asp-route-id="@service.Id">Hire</a>
-
-
-
+        
     }
 </div>
