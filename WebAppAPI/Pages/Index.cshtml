@@ -14,6 +14,8 @@
     {
         <p>Service: @service.Name</p>
         <p>Price: @service.Price / h</p>
+        <p>Description: @service.Description</p>
         <p>Avalible: @service.IsAvalible</p>
+        <a asp-page="Update" asp-route-id="@service.Id">Update</a>
     }
 </div>
