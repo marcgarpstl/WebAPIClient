@@ -21,7 +21,7 @@ namespace WebAppAPI.Pages
         {
             service = dbc.Services.Find(Id);
         }
-        public void OnPost()
+        public ActionResult OnPost()
         {
             if (ModelState.IsValid)
             {
@@ -33,8 +33,8 @@ namespace WebAppAPI.Pages
                 serviceReg.IsAvalible = service.IsAvalible;
                 
                 dbc.SaveChanges();
-                
             }
+            return RedirectToPage("/Index");
         }
     }
 }

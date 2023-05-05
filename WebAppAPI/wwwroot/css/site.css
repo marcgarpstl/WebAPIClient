@@ -16,3 +16,28 @@ html {
 body {
   margin-bottom: 60px;
 }
+.delButton{
+    background-color: red;
+    border: 1px solid black;
+    box-shadow: grey 1px 1px;
+    color:white;
+}
+.updateButton {
+    background-color: green;
+    border: 1px solid black;
+    box-shadow: grey 1px 1px;
+    color: white
+}
+.linkedText{
+    color: white;
+    background-color: green;
+    text-decoration: none;
+}
+.linkedText:hover {
+    color: white;
+    background-color: green;
+    text-decoration: none;
+}
+.h4Hire{
+    text-decoration: underline;
+}
