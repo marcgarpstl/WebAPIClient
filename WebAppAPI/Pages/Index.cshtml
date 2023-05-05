@@ -9,13 +9,12 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <a href="/Create">Add service</a>
+    <h3><a href="/Create">Add service</a></h3>
     @foreach(Models.Service service in Model.services)
     {
         <p>Service: @service.Name</p>
         <p>Price: @service.Price / h</p>
-        <p>Description: @service.Description</p>
-        <p>Avalible: @service.IsAvalible</p>
-        <a asp-page="Update" asp-route-id="@service.Id">Update</a>
+
+
     }
 </div>

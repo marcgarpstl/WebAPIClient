@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebAppAPI.DatabaseContext;
 using WebAppAPI.Models;
 
@@ -20,4 +19,10 @@ public class ServicesController : ControllerBase
     {
         return dbc.Services.ToList();
     }
+    //[HttpGet]
+    //public Service GetObject(int id)
+    //{
+    //    Service service = dbc.Services.Find(id);
+    //    return service;
+    //}
 }

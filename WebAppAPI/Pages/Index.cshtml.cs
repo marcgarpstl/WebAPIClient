@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebAppAPI.DatabaseContext;
 using WebAppAPI.Models;
 
@@ -18,6 +19,14 @@ namespace WebAppAPI.Pages
         public void OnGet()
         {
             services = dbc.Services.ToList();
+        }
+        public ActionResult OnPostDelete(int id)
+        {
+            Service serviceToDelete = dbc.Services.SingleOrDefault(s => s.Id == id);
+            dbc.Services.Remove(serviceToDelete);
+            dbc.SaveChanges();
+            return RedirectToPage("/Index");
+
         }
     }
 }
