@@ -25,13 +25,7 @@ namespace WebAppAPI.Pages
 
         public ActionResult OnPost(int id)
         {
-            if(ModelState.IsValid)
-            {
-                service = dbc.Services.Find(service.Id);
-                service.IsAvalible = false;
-                dbc.SaveChanges();
-            }
-            return RedirectToPage("/Index");
+            return RedirectToPage("/BillingInformation");
         }
     }
 }

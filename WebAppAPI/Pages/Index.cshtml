@@ -18,7 +18,7 @@
         @if (service.IsAvalible == true)
         {
             <p>Available: Yes</p>
-            <a asp-page="Hire" asp-route-id="@service.Id">Hire</a>
+            <button class="updateButton" asp-page-handler="Hire" asp-route-id="@service.Id"><a class="linkedText" asp-page="Hire" asp-route-id="@service.Id">Hire</a></button>
         }
         else
         {

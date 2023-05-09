@@ -6,11 +6,10 @@
 
 <form method="post">
     <input type="hidden" asp-for="@Model.service.Id" />
-    <input type="hidden" asp-for="@Model.service.IsAvalible" />
     <h4 class="h4Hire">@Model.service.Name</h4>
     <p>@Model.service.Description</p>
     <p>@Model.service.Price kr / h</p>
-    <p>Please input how many hours you would like to hire @Model.service.Name.</p>
+    <p>How many hours?</p>
     <input asp-for="@Model.sum" />
     <p><span asp-validation-for="@Model.sum"></span></p>
     <button type="submit">Hire</button>
