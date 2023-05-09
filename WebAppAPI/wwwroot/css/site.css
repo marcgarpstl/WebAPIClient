@@ -41,3 +41,27 @@ body {
 .h4Hire{
     text-decoration: underline;
 }
+.leftColumn{
+    width: 300px;
+    float:left;
+}
+.rightColumn{
+    width: 300px;
+}
+.text{
+    width: 300px;
+}
+.divContainer{
+    display: inline-grid;
+    width: 701px;
+}
+.b-display{
+    margin-bottom: 30px;
+}
+.order {
+    background-color: green;
+    border: 1px solid black;
+    box-shadow: grey 1px 1px;
+    color: white;
+}
+
