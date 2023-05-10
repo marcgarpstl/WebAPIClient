@@ -6,11 +6,12 @@
 
 <form method="post">
     <input type="hidden" asp-for="@Model.service.Id" />
+    <input type="hidden" asp-for="@Model.amount">
     <h4 class="h4Hire">@Model.service.Name</h4>
     <p>@Model.service.Description</p>
     <p>@Model.service.Price kr / h</p>
-    <p>How many hours?</p>
-    <input asp-for="@Model.sum" />
-    <p><span asp-validation-for="@Model.sum"></span></p>
-    <button type="submit">Hire</button>
+    <p>Hours</p>
+    <input type="number" min="1" pattern="[0-9]" name="@Model.amount" value="@Model.amount" />
+    <p><span asp-validation-for="@Model.amount"></span></p>
+    <button type="submit" asp-route-amount="@Model.amount" asp-route-id="@Model.service.Id">Continue</button>
 </form>

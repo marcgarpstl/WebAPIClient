@@ -9,32 +9,44 @@ namespace WebAppAPI.Pages
     public class BillingInformationModel : PageModel
     {
         DataBaseContext dbc;
-        public string firstName;
-        public string lastName;
-        public string address;
-        public string phonenumber;
-        public string email;
-        public string zipcode;
-        public string city;
+
+        
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string address { get; set; }
+        public string phonenumber { get; set; } 
+        public string email { get; set; }
+        public string zipcode { get; set; }
+        public string city { get; set; }
+
+        public int total { get; set; }
         public BillingInformationModel(DataBaseContext dbc)
         {
             this.dbc = dbc;
         }
+        
         [BindProperty]
         public Service service { get; set; }
+        [BindProperty]
+        public HireModel hire { get; set; }
 
-        public void OnGet(int id)
+
+
+        public void OnGet(int id, int amount)
         {
+            id = int.Parse(Request.Form["id"]);
             service = dbc.Services.Find(id);
+            total = amount;
         }
 
         public ActionResult OnPost(int id)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 service = dbc.Services.Find(service.Id);
                 service.IsAvalible = false;
                 dbc.SaveChanges();
+                
             }
             return RedirectToPage("/Index");
         }

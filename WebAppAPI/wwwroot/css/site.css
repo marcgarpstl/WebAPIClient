@@ -58,10 +58,20 @@ body {
 .b-display{
     margin-bottom: 30px;
 }
-.order {
+#order{
     background-color: green;
     border: 1px solid black;
     box-shadow: grey 1px 1px;
     color: white;
+    width: 208.6px;
+    margin-top: 35px;
+}
+#order2 {
+    background-color: red;
+    border: 1px solid black;
+    box-shadow: grey 1px 1px;
+    color: white;
+    width: 208.6px;
+    margin-top: 121px;
 }
 
