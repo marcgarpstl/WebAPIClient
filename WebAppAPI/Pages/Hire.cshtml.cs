@@ -9,6 +9,14 @@ namespace WebAppAPI.Pages
     {
         DataBaseContext dbc;
         
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string address { get; set; }
+        public string phonenumber { get; set; }
+        public string email { get; set; }
+        public string zipcode { get; set; }
+        public string city { get; set; }
+
 
         public HireModel(DataBaseContext dbc)
         {
@@ -17,26 +25,23 @@ namespace WebAppAPI.Pages
         [BindProperty]
         public Service service { get; set; }
         [BindProperty]
-        public int amount { get; set; }
+        public int total { get; set; }
 
         public void OnGet(int id)
         {
             service = dbc.Services.Find(id);
         }
 
-        public ActionResult OnPost(int id)
+        public void OnPost(int id,int amount)
         {
             if (!ModelState.IsValid)
             {
                 var service = dbc.Services.Find(id);
-                var amount = int.Parse(Request.Form["amount"]);
+                amount = int.Parse(Request.Form["total"]);
                 var price = dbc.Services.SingleOrDefault(s => s.Id == id).Price;
-                var total = price * amount;
-                amount = total;
-
-                return RedirectToPage("/BillingInformation");
+                total = price * amount;
+                service.Id = id;
             }
-            return Page();
         }
     }
 }
