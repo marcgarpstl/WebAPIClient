@@ -115,8 +115,8 @@ body {
     background-color: rgb(255, 255, 255);
     display: grid;
     grid-template-rows: auto;
-    grid-template-columns: 200px 200px 200px;
-    height: 750px;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 100vh;
     overflow: auto;
 }
 
@@ -127,35 +127,42 @@ body {
     grid-column: 1;
     clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
     opacity: 0.8;
-    margin-left: 70px;
-    width: 300px;
-    margin-top: 25px;
-
-
+    margin-left: 5%;
+    width: 25%;
+    margin-top: 2.5vh;
 }
+
 #box2 {
     border-radius: 25px;
     background-color: rgb(40, 93, 52);
     grid-row: 1/8;
-    grid-column: 7;
+    grid-column: 3;
     clip-path: polygon(0 75%, 25% 100%, 100% 100%, 100% 0%, 0% 0);
     opacity: 0.8;
-    margin-right: 5px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    width: 300px;
-
+    margin-right: 5%;
+    width: 25%;
+    margin-top: 2.5vh;
 }
 
 #box3 {
     border-radius: 25px;
     background-color: rgb(40, 93, 52);
     grid-row: 1/8;
-    grid-column: 4;
-    width: 700px;
+    grid-column: 2; 
+    width: 50%;
     opacity: 0.8;
-    margin-top: 25px;
+    margin-top: 2.5vh;
     overflow: auto;
 }
-
-
+#textClass{
+    color: black;
+}
+#textClass2{
+    color: deeppink;
+    font-style: italic;
+    font-size: 20px;
+}
+#textClass3 {
+    color: antiquewhite;
+    font-size: 15px;
+}

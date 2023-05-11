@@ -12,17 +12,17 @@
     <h3><a href="/Create">Add service</a></h3>
     @foreach (Models.Service service in Model.services)
     {
-        <p>Service: @service.Name</p>
-        <p>Price: @service.Price / h</p>
-        <p>Service: @service.Description</p>
+        <p id="textClass">Service: @service.Name</p>
+        <p id ="textClass">Price: @service.Price / h</p>
+        <p id ="textClass">Service: @service.Description</p>
         @if (service.IsAvalible == true)
         {
-            <p>Available: Yes</p>
+            <p id="textClass">Available: Yes</p>
             <button class="updateButton" asp-page-handler="Hire" asp-route-id="@service.Id"><a class="linkedText" asp-page="Hire" asp-route-id="@service.Id">Hire</a></button>
         }
         else
         {
-            <p>Available: No</p>
+            <p id="textClass">Available: No</p>
         }
         <form method="post" asp-page-handler="Delete" asp-route-id="@service.Id">
 
