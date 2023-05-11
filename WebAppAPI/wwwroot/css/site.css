@@ -16,6 +16,11 @@ html {
 body {
   margin-bottom: 60px;
 }
+.navbar {
+    background-color: rgb(40, 93, 52);
+    opacity: 0.8;
+    
+}
 .delButton{
     background-color: red;
     border: 1px solid black;
@@ -104,6 +109,53 @@ body {
 }
 #totalPrice{
     margin-left:auto;
+}
+
+#gridstructure {
+    background-color: rgb(255, 255, 255);
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 200px 200px 200px;
+    height: 750px;
+    overflow: auto;
+}
+
+#box1 {
+    border-radius: 25px;
+    background-color: rgb(40, 93, 52);
+    grid-row: 1/8;
+    grid-column: 1;
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
+    opacity: 0.8;
+    margin-left: 70px;
+    width: 300px;
+    margin-top: 25px;
+
+
+}
+#box2 {
+    border-radius: 25px;
+    background-color: rgb(40, 93, 52);
+    grid-row: 1/8;
+    grid-column: 7;
+    clip-path: polygon(0 75%, 25% 100%, 100% 100%, 100% 0%, 0% 0);
+    opacity: 0.8;
+    margin-right: 5px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 300px;
+
+}
+
+#box3 {
+    border-radius: 25px;
+    background-color: rgb(40, 93, 52);
+    grid-row: 1/8;
+    grid-column: 4;
+    width: 700px;
+    opacity: 0.8;
+    margin-top: 25px;
+    overflow: auto;
 }
 
 

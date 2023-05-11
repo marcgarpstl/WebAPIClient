@@ -10,7 +10,7 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <h3><a href="/Create">Add service</a></h3>
-    @foreach(Models.Service service in Model.services)
+    @foreach (Models.Service service in Model.services)
     {
         <p>Service: @service.Name</p>
         <p>Price: @service.Price / h</p>
@@ -31,6 +31,6 @@
             </button>
             <button class="updateButton" asp-page-handler="Update" asp-route-id="@service.Id"><a class="linkedText" asp-page="Update" asp-route-id="@service.Id">Update</a></button>
         </form>
-        
+
     }
 </div>
