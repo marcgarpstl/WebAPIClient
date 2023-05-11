@@ -56,6 +56,10 @@ namespace WebAppAPI.Pages
 
         public ActionResult OnPostCancel()
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToPage("/Index");
+            }
             return RedirectToPage("/Index");
         }
     }
