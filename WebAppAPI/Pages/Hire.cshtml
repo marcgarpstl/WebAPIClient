@@ -3,14 +3,67 @@
 @{
 }
 
+<div id="div1" style="display:block;">
+    <form method="post">
+        <input type="hidden" asp-for="@Model.service.Id" />
+        <h4 class="h4Hire">@Model.service.Name</h4>
+        <p>@Model.service.Description</p>
+        <p>@Model.service.Price kr / h</p>
+        <p>Hours</p>
+        <input type="number" min="1" pattern="[0-9]" name="total" value="total" />
+        <p><span asp-validation-for="@Model.total"></span></p>
+        <button type="submit" asp-route-id="@Model.service.Id" asp-route-amount="@Model.total" onclick="showDiv2()">Continue</button>
+    </form>
+</div>
 
-<form method="post">
-    <input type="hidden" asp-for="@Model.service.Id" />
-    <h4 class="h4Hire">@Model.service.Name</h4>
-    <p>@Model.service.Description</p>
-    <p>@Model.service.Price kr / h</p>
-    <p>How many hours?</p>
-    <input asp-for="@Model.sum" />
-    <p><span asp-validation-for="@Model.sum"></span></p>
-    <button type="submit">Hire</button>
-</form>
+<div id="div2" style="display:none;">
+    <form class="formClass" method="post">
+        <input type="hidden" asp-for="@Model.service.Id" />
+        <input type="hidden" asp-for="@Model.total" />
+        <div class="divContainer">
+            <div>
+                <h1 class="b-display">Order</h1>
+
+                <div class="row">
+                    <div class="leftColumn">
+                        <p>@Model.total</p>
+                        <p>Services ordered: @Model.service.Name</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h1 class="b-display">Billing Information</h1>
+                <div class="row">
+                    <div class="leftColumn">
+                        <p class="text">Firstname</p><input asp-for="@Model.firstName" />
+                        <p><span asp-validation-for="@Model.firstName"></span></p>
+                        <p class="text">Address</p>
+                        <input asp-for="@Model.address" />
+                        <p><span asp-validation-for="@Model.address"></span></p>
+                        <p class="text">City</p>
+                        <input asp-for="@Model.city" />
+                        <p><span asp-validation-for="@Model.city"></span></p>
+                        <p class="text">Email</p>
+                        <input asp-for="@Model.email" />
+                        <p><span asp-validation-for="@Model.email"></span></p>
+                        <button id="order" type="submit">Confirm</button>
+                    </div>
+                    <div class="rightColumn">
+                        <p class="text">Lastname</p>
+                        <input asp-for="@Model.lastName" />
+                        <p><span asp-validation-for="@Model.lastName"></span></p>
+                        <p class="text">Phonenumber</p>
+                        <input asp-for="@Model.phonenumber" pattern="^\d{10}$" />
+                        <p><span asp-validation-for="@Model.phonenumber"></span></p>
+                        <p class="text">Zipcode</p>
+                        <input asp-for="@Model.zipcode" pattern="^\d{5}$" />
+                        <p><span asp-validation-for="@Model.zipcode"></span></p>
+                        <button asp-page-handler="Index" id="order2">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

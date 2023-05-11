@@ -13,16 +13,22 @@ public class ServicesController : ControllerBase
     {
         this.dbc = dbc;
     }
-
+    // GET: api/Services
     [HttpGet]
     public List<Service> GetObjects()
     {
         return dbc.Services.ToList();
     }
-    //[HttpGet]
-    //public Service GetObject(int id)
-    //{
-    //    Service service = dbc.Services.Find(id);
-    //    return service;
-    //}
+    // GET: api/Services/{id}
+    [Route("{id}")]
+    [HttpGet]
+    public async Task<ActionResult<Service>> GetService(int id)
+    {
+        Service service = dbc.Services.Find(id);
+        if(service == null)
+        {
+            return NotFound();
+        }
+        return service;
+    }
 }
