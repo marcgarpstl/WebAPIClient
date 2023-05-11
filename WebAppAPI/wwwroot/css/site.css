@@ -47,18 +47,19 @@ body {
     text-decoration: underline;
 }
 .leftColumn{
-    width: 300px;
+    width: 250px;
     float:left;
 }
 .rightColumn{
-    width: 300px;
+    width: 250px;
 }
 .text{
     width: 300px;
+    padding-block-end: auto;
 }
 .divContainer{
-    display: inline-grid;
-    width: 701px;
+    display: inline-block;
+    width: 1000px;
 }
 .b-display{
     margin-bottom: 30px;
@@ -79,6 +80,37 @@ body {
     width: 208.6px;
     margin-top: 121px;
 }
+#info{
+    width: 500px;
+}
+#orderBox{
+    float:right;
+    width: 500px;
+}
+.formClass{
+    width: 900px;
+}
+.leftColumn1 {
+    width: 250px;
+    float: left;
+    border: 1px solid black;
+}
+
+.rightColumn2 {
+    width: 250px;
+    border: 1px solid black;
+}
+#theAmount{
+    float:left;
+    width: 100px;
+}
+#thePrice{
+    margin-left:auto;
+}
+#totalPrice{
+    margin-left:auto;
+}
+
 #gridstructure {
     background-color: rgb(255, 255, 255);
     display: grid;
@@ -125,4 +157,5 @@ body {
     margin-top: 25px;
     overflow: auto;
 }
+
 
