@@ -85,7 +85,7 @@ body {
     grid-template-rows: auto;
     grid-template-columns: 200px 200px 200px;
     height: 750px;
-    
+    overflow: auto;
 }
 
 #box1 {
@@ -98,6 +98,8 @@ body {
     margin-left: 70px;
     width: 300px;
     margin-top: 25px;
+
+
 }
 #box2 {
     border-radius: 25px;
@@ -108,7 +110,9 @@ body {
     opacity: 0.8;
     margin-right: 5px;
     margin-top: 25px;
+    margin-bottom: 25px;
     width: 300px;
+
 }
 
 #box3 {
@@ -119,5 +123,6 @@ body {
     width: 700px;
     opacity: 0.8;
     margin-top: 25px;
+    overflow: auto;
 }
 

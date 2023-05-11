@@ -54,7 +54,7 @@ button.accept-policy {
     grid-template-rows: auto;
     grid-template-columns: 200px 200px 200px;
     height: 750px;
-   
+    overflow: auto;
 }
 #box1 {
     border-radius: 25px;
@@ -67,6 +67,7 @@ button.accept-policy {
     margin-top: 25px;
     margin-bottom: 25px;
     width: 300px;
+
 }
 
 #box2 {
@@ -80,6 +81,9 @@ button.accept-policy {
     margin-top: 25px;
     margin-bottom: 25px;
     width: 300px;
+    overflow: auto;
+
+
 }
 #box3 {
     border-radius: 25px;
@@ -90,4 +94,5 @@ button.accept-policy {
     opacity: 0.8;
     margin-top: 25px;
     margin-bottom: 25px;
+    overflow: auto;
 }
