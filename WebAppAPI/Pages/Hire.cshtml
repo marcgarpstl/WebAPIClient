@@ -10,9 +10,8 @@
         <p>@Model.service.Description</p>
         <p>@Model.service.Price kr / h</p>
         <p>Hours</p>
-        <input id="amount" type="number" min="1" pattern="[0-9]" name="total" value="total"/>
-        @*<p><span asp-validation-for="@Model.total"></span></p>*@
-        <button type="submit" id="hours" asp-route-id="@Model.service.Id" asp-route-amount="@Model.total" onclick="showDiv2()">Continue</button>
+        <input id="amount" type="number" min="1" pattern="[0-9]"/>
+        <button type="button" id="hours" onclick="showDiv2()">Continue</button>
     </form>
 </div>
 
