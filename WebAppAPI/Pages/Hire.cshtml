@@ -10,9 +10,8 @@
         <p>@Model.service.Description</p>
         <p>@Model.service.Price kr / h</p>
         <p>Hours</p>
-        <input id="amount" type="number" min="1" pattern="[0-9]" name="total" value="total" />
-        <p><span asp-validation-for="@Model.total"></span></p>
-        <button type="submit" id="hours" asp-route-id="@Model.service.Id" asp-route-amount="@Model.total" onclick="showDiv2()">Continue</button>
+        <input id="amount" type="number" min="1" pattern="[0-9]"/>
+        <button type="button" id="hours" onclick="showDiv2()">Continue</button>
     </form>
 </div>
 
@@ -50,30 +49,30 @@
                 <div class="row">
                     <div class="leftColumn">
                         <p class="text">Firstname</p>
-                        <input asp-for="@Model.firstName" required />
+                        <input type="text" asp-for="@Model.firstName" required />
                         <p><span asp-validation-for="@Model.firstName"></span></p>
                         <p class="text">Address</p>
-                        <input asp-for="@Model.address" required />
+                        <input type="text" asp-for="@Model.address" required />
                         <p><span asp-validation-for="@Model.address"></span></p>
                         <p class="text">City</p>
-                        <input asp-for="@Model.city" required />
+                        <input type="text" asp-for="@Model.city" required />
                         <p><span asp-validation-for="@Model.city"></span></p>
                         <p class="text">Email</p>
-                        <input asp-for="@Model.email" required />
+                        <input type="email" asp-for="@Model.email" required />
                         <p><span asp-validation-for="@Model.email"></span></p>
-                        <button id="order" asp-page-handler="Confirm" type="submit">Confirm</button>
+                        <button id="order" type="submit" asp-page-handler="Confirm">Confirm</button>
                     </div>
                     <div class="rightColumn">
                         <p class="text">Lastname</p>
-                        <input asp-for="@Model.lastName" required />
+                        <input type="text" asp-for="@Model.lastName" required />
                         <p><span asp-validation-for="@Model.lastName"></span></p>
                         <p class="text">Phonenumber</p>
-                        <input asp-for="@Model.phonenumber" pattern="^\d{10}$" required />
+                        <input type="tel" asp-for="@Model.phonenumber" pattern="^\d{10}$" required />
                         <p><span asp-validation-for="@Model.phonenumber"></span></p>
                         <p class="text">Zipcode</p>
-                        <input asp-for="@Model.zipcode" pattern="^\d{5}$" required />
+                        <input type="tel" asp-for="@Model.zipcode" pattern="^\d{5}$" required />
                         <p><span asp-validation-for="@Model.zipcode"></span></p>
-                        <button asp-page-handler="Cancel" onclick="return confirm('All information will be lost')" id="order2">Cancel</button>
+                        <button type="button" onclick="return confirm('All information will be lost')" id="order2">Cancel</button>
                     </div>
                 </div>
             </div>
