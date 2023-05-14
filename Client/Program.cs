@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Text;
+using System.Text.Json;
 
 namespace Client
 {
@@ -39,44 +40,80 @@ namespace Client
                 }
             }
         }
-
+        
         private static void Delete()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Please write the name of the service you want to delete.");
+            string name = Console.ReadLine();
+
+            HttpClient client = new HttpClient();
+            Uri uri = new Uri("https://localhost:7238/api/delete?Services1" + name);
+
+            HttpResponseMessage response = client.DeleteAsync(uri).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine("Service with name " + name + " has successfully been deleted.");
+            }
+            else
+            {
+                Console.WriteLine("Error. " + response.ReasonPhrase);
+            }
         }
 
         private static void Update()
         {
-            throw new NotImplementedException();
+            HttpClient client = new HttpClient();
+            Uri uri = new Uri("https://localhost:7238/api/Update");
+
+            bool isAvalible = true;
+
+            Console.Write("Please provide the name of the service you would like to update");
+            string name = Console.ReadLine();
+            Console.Write("Whats the new price for the service");
+            int price = int.Parse(Console.ReadLine());
+            Console.Write("Whats the new decription for the service?");
+            string description = Console.ReadLine();
+
+            Service service = new Service() {Name = name, Price = price , Description = description}; 
+
+            string json = JsonSerializer.Serialize(service);
+
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = client.PutAsync(uri, content).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine("The service price has been updated to: " + service.Price + " And Description to " + service.Description + "!");
+            }
+            else
+            {
+                Console.WriteLine("Update of service failed. Status Code " + (int)response.StatusCode + ": " + response.StatusCode);
+            }
         }
 
         private static void Read()
         {
+            Console.WriteLine("Please write the Name of the service you want.");
+            string service = Console.ReadLine();
+
+
             HttpClient client = new HttpClient();
-            Uri uri = new Uri("https://localhost:7238/api/Services1");
+            Uri uri = new Uri("https://localhost:7238/api/get?Services1" + Service);
 
-            bool isAvalible = true;
+            HttpResponseMessage response = client.GetAsync(uri).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                string json = response.Content.ReadAsStringAsync().Result;
+                Console.WriteLine(json);
+                Service service = JsonSerializer.Deserialize<Service>(json);
+                Console.WriteLine("Service " + service.Name "is ready");
+            }
+            else
+            {
+                Console.WriteLine("Error. " + response.ReasonPhrase);
+            }
 
-            Console.Write("Name: ");
-            string name = Console.ReadLine();
-            Console.Write("Price: ");
-            int price = int.Parse(Console.ReadLine());
-            Console.Write("Description: ");
-            string description = Console.ReadLine();
-
-            Service service = new(name, price, description, isAvalible);
-
-            string json = JsonConvert.SerializeObject(service);
-
-            Console.WriteLine("Json sent: " + json);
-
-            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            HttpResponseMessage response = client.GetAsync(uri, content).Result;
-
-            Console.WriteLine("Status code: " + (int)response.StatusCode);
-            Console.WriteLine("Means:" + response.StatusCode);
-            
         }
 
         private static void Create()
@@ -95,7 +132,7 @@ namespace Client
 
             Service service = new(name, price, description, isAvalible);
 
-            string json = JsonConvert.SerializeObject(service);
+            string json = JsonSerializer.Serialize(service);
 
             Console.WriteLine("Json sent: " + json);
 
