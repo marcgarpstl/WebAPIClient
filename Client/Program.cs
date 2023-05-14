@@ -52,11 +52,6 @@ namespace Client
 
         private static void Read()
         {
-            throw new NotImplementedException();
-        }
-
-        private static void Create()
-        {
             HttpClient client = new HttpClient();
             Uri uri = new Uri("https://localhost:7238/api/Services1");
 
@@ -77,10 +72,45 @@ namespace Client
 
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = client.PostAsync(uri, content).Result;
+            HttpResponseMessage response = client.GetAsync(uri, content).Result;
 
             Console.WriteLine("Status code: " + (int)response.StatusCode);
             Console.WriteLine("Means:" + response.StatusCode);
+            
+        }
+
+        private static void Create()
+        {
+            HttpClient client = new HttpClient();
+            Uri uri = new Uri("https://localhost:7238/api/Services1");
+
+            bool isAvalible = true;
+
+            Console.Write("Please provide a name for the service");
+            string name = Console.ReadLine();
+            Console.Write("Please provide a price for the service");
+            int price = int.Parse(Console.ReadLine());
+            Console.Write("Describe the service you would like to create");
+            string description = Console.ReadLine();
+
+            Service service = new(name, price, description, isAvalible);
+
+            string json = JsonConvert.SerializeObject(service);
+
+            Console.WriteLine("Json sent: " + json);
+
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = client.PostAsync(uri, content).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine("The service with name:" + service.Name " Price: " + service.Price + " And Description " + service.Description + "has been successfully registered!");
+            }
+            else
+            {
+                Console.WriteLine("Creation of service failed. Status Code " + (int)response.StatusCode + ": " + response.StatusCode);
+            }
         }
     }
 }
