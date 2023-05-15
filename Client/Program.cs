@@ -52,7 +52,20 @@ namespace Client
 
         private static void Read()
         {
-            throw new NotImplementedException();
+            HttpClient client = new HttpClient();
+            Uri uri = new Uri("https://localhost:7238/api/Services1");
+            HttpResponseMessage response = client.GetAsync(uri).Result;
+
+            List<Service> services = JsonConvert.DeserializeObject<List<Service>>(response.ToString());
+
+            foreach (Service service in services)
+            {
+                Console.WriteLine(service.Name);
+            }
+
+            Console.WriteLine("Status code: " + (int)response.StatusCode);
+            Console.WriteLine("Means: " + response.StatusCode);
+
         }
 
         private static void Create()
@@ -80,7 +93,7 @@ namespace Client
             HttpResponseMessage response = client.PostAsync(uri, content).Result;
 
             Console.WriteLine("Status code: " + (int)response.StatusCode);
-            Console.WriteLine("Means:" + response.StatusCode);
+            Console.WriteLine("Means: " + response.StatusCode);
         }
     }
 }
