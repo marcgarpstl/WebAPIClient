@@ -94,6 +94,7 @@ namespace Client
 
         private static void Read()
         {
+
             Console.WriteLine("Please write the Name of the service you want.");
             string service = Console.ReadLine();
 
@@ -113,6 +114,7 @@ namespace Client
             {
                 Console.WriteLine("Error. " + response.ReasonPhrase);
             }
+
 
         }
 
