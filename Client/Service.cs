@@ -16,12 +16,16 @@ namespace Client
         public int Price { get; set; }
         public string Description { get; set; }
         public bool IsAvalible { get; set; }
-        public Service( string name, int price, string description, bool isAvalible)
+        public Service(string name, int price, string description, bool isAvalible)
         {
             Name = name;
             Price = price;
             Description = description;
             IsAvalible = isAvalible;
+        }
+
+        public Service()
+        {
         }
     }
 }
