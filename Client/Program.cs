@@ -117,8 +117,14 @@ namespace Client
 
         private static void Read()
         {
+
+            Console.WriteLine("Please write the Name of the service you want.");
+            string service = Console.ReadLine();
+
+
             HttpClient client = new HttpClient();
-            Uri uri = new Uri("https://localhost:7238/api/Services1");
+            Uri uri = new Uri("https://localhost:7238/api/get?Services1" + Service);
+
             HttpResponseMessage response = client.GetAsync(uri).Result;
 
             Console.WriteLine("Please write the Id of the service you want.");
@@ -141,8 +147,6 @@ namespace Client
                 Console.WriteLine("Error. " + response.ReasonPhrase);
             }
 
-            Console.WriteLine("Status code: " + (int)response.StatusCode);
-            Console.WriteLine("Means: " + response.StatusCode);
 
         }
 
@@ -162,7 +166,7 @@ namespace Client
 
             Service service = new(name, price, description, isAvalible);
 
-            string json = JsonConvert.SerializeObject(service);
+            string json = JsonSerializer.Serialize(service);
 
             Console.WriteLine("Json sent: " + json);
 
