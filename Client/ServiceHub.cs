@@ -41,7 +41,7 @@ namespace Client
                         LoadAllServices();
                         break;
                     case "update":
-                        //Update();
+                        UpdateService();
                         break;
                     case "delete":
                         DeleteService();
@@ -55,6 +55,51 @@ namespace Client
                         break;
                 }
             }
+        }
+
+        static void UpdateService()
+        {
+            Client client = new Client();
+            List<Service> services = client.GetServices();
+
+            Console.WriteLine("Please provide the Id of the service you want to update");
+            int id;
+            try
+            {
+                id = int.Parse(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Only Id is accepted");
+                return;
+            }
+            bool isAvalible = true;
+            Console.WriteLine("New name of the service?: ");
+            string name = Console.ReadLine();
+            Console.WriteLine("New hourly rate?: ");
+            int price = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("An updated description?: ");
+            string description = Console.ReadLine();
+            Console.WriteLine("Is it available right away? y/n");
+            string available = Console.ReadLine().ToLower();
+            if (available == "y")
+            {
+                isAvalible = true;
+            }
+            if (available == "n")
+            {
+                isAvalible = false;
+            }
+            Console.WriteLine("Zank you");
+
+            UpdateArgs args =
+                new UpdateArgs() { Id = id, Name = name, Price = price, Description = description, IsAvalible = isAvalible };
+            bool success = client.UpdateToDB(args);
+            if (success)
+            {
+                services.Add(services.SingleOrDefault(services => services.Id == id));
+            }
+
         }
 
         private void DeleteService()

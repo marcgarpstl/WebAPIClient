@@ -10,7 +10,7 @@ namespace Client
         
         static void Main(string[] args)
         {
-            ServiceLib start = new ServiceLib();
+            ServiceHub start = new();
             start.Run();
         }
 
