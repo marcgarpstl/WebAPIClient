@@ -48,22 +48,22 @@ public class ServicesController : ControllerBase
     }
 
     [HttpPut]
-    public ActionResult UpdateService([FromBody] UpdateArgs service)
+    public ActionResult UpdateService([FromBody] UpdateArgs updatedService)
     {
-        if (service == null)
+        if (updatedService == null)
         {
             return BadRequest();
         }
-        Service serviceUpdate = dbc.Services.FirstOrDefault(service => service.Id == service.Id);
+        Service serviceUpdate = dbc.Services.FirstOrDefault(service => service.Id == updatedService.Id);
         if (serviceUpdate == null)
         {
             return NotFound();
         }
 
-        serviceUpdate.Name = service.Name;
-        serviceUpdate.Price = service.Price;
-        serviceUpdate.Description = service.Description;
-        serviceUpdate.IsAvalible = service.IsAvalible;
+        serviceUpdate.Name = updatedService.Name;
+        serviceUpdate.Price = updatedService.Price;
+        serviceUpdate.Description = updatedService.Description;
+        serviceUpdate.IsAvalible = updatedService.IsAvalible;
         dbc.SaveChanges();
         return Ok();
     }
