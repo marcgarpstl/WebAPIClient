@@ -15,22 +15,38 @@ public class ServicesController : ControllerBase
     }
     // GET: api/Services
     [HttpGet]
-    public List<Service> GetObjects()
+    public ActionResult<List<Service>> GetServices()
     {
         return dbc.Services.ToList();
     }
-    // GET: api/Services/{id}
-    [Route("{id}")]
-    [HttpGet]
-    public async Task<ActionResult<Service>> GetService(int id)
+
+
+    [HttpPost]
+    public ActionResult AddService([FromBody] Service service)
     {
-        Service service = dbc.Services.Find(id);
-        if(service == null)
+        if (service == null)
+        {
+            return BadRequest();
+        }
+        dbc.Services.Add(service);
+        dbc.SaveChangesAsync();
+        return Ok();
+    }
+
+
+    [HttpDelete]
+    public ActionResult DeleteService(int id)
+    {
+        Service deleteService = dbc.Services.FirstOrDefault(service => service.Id == id);
+        if(deleteService == null)
         {
             return NotFound();
         }
-        return service;
+        dbc.Services.Remove(deleteService);
+        dbc.SaveChanges();
+        return Ok();
     }
+
     [HttpPut]
     public ActionResult UpdateService([FromBody] UpdateArgs service)
     {
@@ -51,4 +67,5 @@ public class ServicesController : ControllerBase
         dbc.SaveChanges();
         return Ok();
     }
+
 }

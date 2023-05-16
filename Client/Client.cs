@@ -9,14 +9,66 @@ namespace Client
 {
     public class Client
     {
-        HttpClient httpClient = new HttpClient();
-        string url = "https://localhost:7238/api/Services1";
+
+        HttpClient http = new();
+        string url = "https://localhost:7238/api/Services";
+
+        public List<Service> GetServices()
+        {
+            Uri uri = new Uri(url);
+
+            HttpResponseMessage response = http.GetAsync(uri).Result;
+            if(response.IsSuccessStatusCode)
+            {
+                string json = response.Content.ReadAsStringAsync().Result;
+                return JsonConvert.DeserializeObject<List<Service>>(json);
+            }
+
+            Console.WriteLine("Error. " + (int)response.StatusCode + " : " + response.StatusCode);
+            return new List<Service>();
+        }
+        public bool AddService(string name, int price,  string description)
+        {
+            Service newService = new() {Name = name, Price = price, Description = description, IsAvalible = true };
+            
+            Uri uri = new Uri(url);
+
+            string jayson = JsonConvert.SerializeObject(newService);
+            Console.WriteLine("sending json: " + jayson);
+
+            StringContent stringContent = new StringContent(jayson, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = http.PostAsync(uri, stringContent).Result;
+
+            if(response.IsSuccessStatusCode)
+            {
+                Console.WriteLine(name + " was added to the database.");
+                return true;
+            }
+
+            Console.WriteLine("Error. " + (int)response.StatusCode + " : " + response.StatusCode);
+            return false;
+        }
+
+        public bool RemoveService(int id) 
+        {
+            Uri uri = new Uri(url + "?id=" + id);
+
+            HttpResponseMessage response = http.DeleteAsync(uri).Result;
+
+            if(response.IsSuccessStatusCode)
+            {
+                Console.WriteLine("Service with id: " + id + " has been removed");
+                return true;
+            }
+
+            Console.WriteLine("Error. " + (int)response.StatusCode + " : " + response.StatusCode);
         
         public List<Service> GetService()
         {
             Uri uri = new Uri(url);
 
-            HttpResponseMessage response = httpClient.GetAsync(uri).Result;
+            HttpResponseMessage response = http.GetAsync(uri).Result;
             if (response.IsSuccessStatusCode)
             {
                 string json = response.Content.ReadAsStringAsync().Result;
@@ -33,9 +85,9 @@ namespace Client
 
         public bool UpdateToDB(UpdateArgs args)
         {
-            HttpClient httpClient = new HttpClient();
+            
             string itemId = args.Id.ToString();
-            string url = "https://localhost:7238/api/services";
+            
             Uri uri = new Uri(url + "?id=" + itemId);
 
             string json = JsonConvert.SerializeObject(args);
@@ -43,7 +95,7 @@ namespace Client
 
             StringContent stringContent = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = httpClient.PutAsync(uri, stringContent).Result;
+            HttpResponseMessage response = http.PutAsync(uri, stringContent).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -51,6 +103,7 @@ namespace Client
                 return true;
             }
             Console.WriteLine("Error. Status Code " + (int)response.StatusCode + ": " + response.StatusCode);
+
             return false;
         }
     }

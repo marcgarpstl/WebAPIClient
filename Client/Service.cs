@@ -18,17 +18,12 @@ namespace Client
         public int Price { get; set; }
         public string Description { get; set; }
         public bool IsAvalible { get; set; }
-        public Service(string name, int price, string description, bool isAvalible)
+
+
+        public void LoadService()
         {
-            
-            Name = name;
-            Price = price;
-            Description = description;
-            IsAvalible = isAvalible;
-        }
-        public void PrintService()
-        {
-            Console.WriteLine("Id: " + Id + " Name: " + Name + ", Price: " + Price + ", Description: " + Description + " Available: " + IsAvalible);
+            Console.WriteLine("Id: " + Id + "\nService: " + Name + " Price: " + Price + "\nDescription: " + Description + "\nAvailable: " + IsAvalible);
+
         }
     }
 }
