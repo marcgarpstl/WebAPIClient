@@ -57,11 +57,8 @@ namespace Client
             }
         }
 
-        static void UpdateService()
+        private void UpdateService()
         {
-            Client client = new Client();
-            List<Service> services = client.GetServices();
-
             Console.WriteLine("Please provide the Id of the service you want to update");
             int id;
             try
