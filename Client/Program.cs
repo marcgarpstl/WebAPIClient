@@ -1,16 +1,18 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Net.Http;
 using System.Text;
-using System.Text.Json;
-using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Client
 {
     public class Program
     {
+        
         static void Main(string[] args)
         {
-            ServiceHub hub = new ServiceHub();
-            hub.Run();
+            ServiceLib start = new ServiceLib();
+            start.Run();
         }
+
     }
 }

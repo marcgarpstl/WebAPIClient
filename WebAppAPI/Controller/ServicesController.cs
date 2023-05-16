@@ -47,5 +47,25 @@ public class ServicesController : ControllerBase
         return Ok();
     }
 
+    [HttpPut]
+    public ActionResult UpdateService([FromBody] UpdateArgs service)
+    {
+        if (service == null)
+        {
+            return BadRequest();
+        }
+        Service serviceUpdate = dbc.Services.FirstOrDefault(service => service.Id == service.Id);
+        if (serviceUpdate == null)
+        {
+            return NotFound();
+        }
+
+        serviceUpdate.Name = service.Name;
+        serviceUpdate.Price = service.Price;
+        serviceUpdate.Description = service.Description;
+        serviceUpdate.IsAvalible = service.IsAvalible;
+        dbc.SaveChanges();
+        return Ok();
+    }
 
 }
