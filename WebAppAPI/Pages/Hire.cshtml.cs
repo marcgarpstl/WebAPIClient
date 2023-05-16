@@ -31,17 +31,6 @@ namespace WebAppAPI.Pages
         {
             service = dbc.Services.Find(id);
         }
-
-        public void OnPost(int id, int amount)
-        {
-            if (!ModelState.IsValid)
-            {
-                var service = dbc.Services.Find(id);
-                amount = int.Parse(Request.Form["total"]);
-                var price = dbc.Services.SingleOrDefault(s => s.Id == id).Price;
-                total = price * amount;
-            }
-        }
         public ActionResult OnPostConfirm()
         {
             if (!ModelState.IsValid)
@@ -52,11 +41,6 @@ namespace WebAppAPI.Pages
                 return RedirectToPage("/Index");
             }
             return Page();
-        }
-
-        public ActionResult OnPostCancel()
-        {
-            return RedirectToPage("/Index");
         }
     }
 }

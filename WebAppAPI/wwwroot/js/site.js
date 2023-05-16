@@ -5,6 +5,7 @@
 
 var div1 = document.getElementById("div1");
 var div2 = document.getElementById("div2");
+var cancel = document.getElementById("order2");
 
 
 function showDiv2() {
@@ -27,3 +28,6 @@ function showDiv2() {
 
     });
 }
+cancel.addEventListener("click", function () {
+    window.location.href = "/Index";
+})
