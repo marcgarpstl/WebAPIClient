@@ -50,20 +50,21 @@ namespace Client
             return false;
         }
 
-        public bool RemoveService(int id) 
+        public bool RemoveService(int id)
         {
             Uri uri = new Uri(url + "?id=" + id);
 
             HttpResponseMessage response = http.DeleteAsync(uri).Result;
 
-            if(response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 Console.WriteLine("Service with id: " + id + " has been removed");
                 return true;
             }
 
             Console.WriteLine("Error. " + (int)response.StatusCode + " : " + response.StatusCode);
-        
+            return false;
+        }
         public List<Service> GetService()
         {
             Uri uri = new Uri(url);
