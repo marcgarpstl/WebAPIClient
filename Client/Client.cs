@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Client
 {
@@ -18,7 +14,7 @@ namespace Client
             Uri uri = new Uri(url);
 
             HttpResponseMessage response = http.GetAsync(uri).Result;
-            if(response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 string json = response.Content.ReadAsStringAsync().Result;
                 return JsonConvert.DeserializeObject<List<Service>>(json);
@@ -27,10 +23,10 @@ namespace Client
             Console.WriteLine("Error. " + (int)response.StatusCode + " : " + response.StatusCode);
             return new List<Service>();
         }
-        public bool AddService(string name, int price,  string description)
+        public bool AddService(string name, int price, string description)
         {
-            Service newService = new() {Name = name, Price = price, Description = description, IsAvalible = true };
-            
+            Service newService = new() { Name = name, Price = price, Description = description, IsAvalible = true };
+
             Uri uri = new Uri(url);
 
             string jayson = JsonConvert.SerializeObject(newService);
@@ -40,7 +36,7 @@ namespace Client
 
             HttpResponseMessage response = http.PostAsync(uri, stringContent).Result;
 
-            if(response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 Console.WriteLine(name + " was added to the database.");
                 return true;
@@ -65,30 +61,12 @@ namespace Client
             Console.WriteLine("Error. " + (int)response.StatusCode + " : " + response.StatusCode);
             return false;
         }
-        public List<Service> GetService()
-        {
-            Uri uri = new Uri(url);
-
-            HttpResponseMessage response = http.GetAsync(uri).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                string json = response.Content.ReadAsStringAsync().Result;
-                Console.WriteLine("Received json: " + json);
-                return JsonConvert.DeserializeObject<List<Service>>(json);
-            }
-            else
-            {
-                Console.WriteLine("Error. Status Code " + (int)response.StatusCode + ": " + response.StatusCode);
-            }
-
-            return new List<Service>();
-        }
 
         public bool UpdateToDB(UpdateArgs args)
         {
-            
+
             string itemId = args.Id.ToString();
-            
+
             Uri uri = new Uri(url + "?id=" + itemId);
 
             string json = JsonConvert.SerializeObject(args);

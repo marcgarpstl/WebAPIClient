@@ -19,7 +19,7 @@ namespace Client
 
         public void ShowAllServices()
         {
-            services = client.GetService();
+            services = client.GetServices();
         }
 
         public void Run()
@@ -128,7 +128,7 @@ namespace Client
             bool success = client.AddService(name, price, description); 
             if(success)
             {
-                ShowAllServices();
+                LoadAllServices();
             }
 
         }

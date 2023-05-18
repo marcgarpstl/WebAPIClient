@@ -4,7 +4,7 @@
 }
 
 
-<form method="post">
+<form id="updateForm" method="post">
     <input type="hidden" asp-for="@Model.service.Id" />
     <p>Service</p><input asp-for="@Model.service.Name" />
     <p><span asp-validation-for="@Model.service.Name"></span></p>
