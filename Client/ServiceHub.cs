@@ -19,7 +19,7 @@ namespace Client
 
         public void ShowAllServices()
         {
-            services = client.GetServices();
+            services = client.GetService();
         }
 
         public void Run()
@@ -91,7 +91,7 @@ namespace Client
 
             UpdateArgs args =
                 new UpdateArgs() { Id = id, Name = name, Price = price, Description = description, IsAvalible = isAvalible };
-            bool success = client.UpdateToDB(args);
+            client.UpdateToDB(args);
 
         }
 
