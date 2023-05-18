@@ -1,0 +1,174 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+.navbar {
+    background-color: rgb(40, 93, 52);
+    opacity: 0.8;
+    
+}
+.delButton{
+    background-color: red;
+    border: 1px solid black;
+    box-shadow: grey 1px 1px;
+    color:white;
+}
+.updateButton {
+    background-color: green;
+    border: 1px solid black;
+    box-shadow: grey 1px 1px;
+    color: white
+}
+.linkedText{
+    color: white;
+    background-color: green;
+    text-decoration: none;
+}
+.linkedText:hover {
+    color: white;
+    background-color: green;
+    text-decoration: none;
+}
+.h4Hire{
+    text-decoration: underline;
+}
+.leftColumn{
+    width: 249px;
+    float:left;
+}
+.rightColumn{
+    width: 250px;
+}
+.text{
+    width: 300px;
+    padding-block-end: auto;
+}
+.divContainer{
+    margin-left: 20px;
+    display: grid;
+    width: 700px;
+}
+.b-display{
+    margin-bottom: 30px;
+}
+#order{
+    background-color: green;
+    border: 1px solid black;
+    box-shadow: grey 1px 1px;
+    color: white;
+    width: 208.6px;
+    margin-top: 35px;
+}
+#order2 {
+    background-color: red;
+    border: 1px solid black;
+    box-shadow: grey 1px 1px;
+    color: white;
+    width: 208.6px;
+    margin-top: 121px;
+}
+#info{
+    width: 700px;
+}
+#orderBox{
+    float:right;
+    width: 700px;
+}
+.formClass{
+    width: 700px;
+}
+.leftColumn1 {
+    width: 250px;
+    float: left;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.rightColumn2 {
+    width: 250px;
+    border: 1px solid black;
+    background-color: white;
+}
+#theAmount{
+    float:left;
+    width: 100px;
+}
+#thePrice{
+    margin-left:auto;
+}
+#totalPrice {
+    padding-left: 170px;
+}
+
+#gridstructure {
+    background-color: rgb(255, 255, 255);
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 100vh;
+    overflow: auto;
+}
+
+#box1 {
+    border-radius: 25px;
+    background-color: rgb(40, 93, 52);
+    grid-row: 1/8;
+    grid-column: 1;
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
+    opacity: 0.8;
+    margin-left: 5%;
+    width: 25%;
+    margin-top: 2.5vh;
+}
+
+#box2 {
+    border-radius: 25px;
+    background-color: rgb(40, 93, 52);
+    grid-row: 1/8;
+    grid-column: 3;
+    clip-path: polygon(0 75%, 25% 100%, 100% 100%, 100% 0%, 0% 0);
+    opacity: 0.8;
+    margin-right: 5%;
+    width: 25%;
+    margin-top: 2.5vh;
+}
+
+#box3 {
+    border-radius: 25px;
+    background-color: rgb(40, 93, 52);
+    grid-row: 1/8;
+    grid-column: 2; 
+    width: 50%;
+    opacity: 0.8;
+    margin-top: 2.5vh;
+    overflow: auto;
+}
+#textClass{
+    color: black;
+}
+#textClass2{
+    color: deeppink;
+    font-style: italic;
+    font-size: 20px;
+}
+#textClass3 {
+    color: antiquewhite;
+    font-size: 15px;
+}
+#updateForm{
+    margin-left: 20px;
+}
