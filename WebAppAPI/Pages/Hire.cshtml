@@ -3,7 +3,7 @@
 @{
 }
 <div id="div1">
-    <form method="post">
+    <form id="updateForm" method="post">
         <input type="hidden" asp-for="@Model.service.Id" />
         <input id="price" type="hidden" asp-for="@Model.service.Price" />
         <h4 class="h4Hire">@Model.service.Name</h4>

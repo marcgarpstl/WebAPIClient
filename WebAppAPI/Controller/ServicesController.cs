@@ -29,7 +29,7 @@ public class ServicesController : ControllerBase
             return BadRequest();
         }
         dbc.Services.Add(service);
-        dbc.SaveChangesAsync();
+        dbc.SaveChanges();
         return Ok();
     }
 
