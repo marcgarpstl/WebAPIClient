@@ -19,7 +19,7 @@ namespace Client
 
         public void ShowAllServices()
         {
-            services = client.GetService();
+            services = client.GetServices();
         }
 
         public void Run()
