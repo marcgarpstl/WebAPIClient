@@ -17,9 +17,10 @@ namespace Client
             if (response.IsSuccessStatusCode)
             {
                 string json = response.Content.ReadAsStringAsync().Result;
+                Console.WriteLine("Received json: " + json);
                 return JsonConvert.DeserializeObject<List<Service>>(json);
             }
-
+            
             Console.WriteLine("Error. " + (int)response.StatusCode + " : " + response.StatusCode);
             return new List<Service>();
         }
